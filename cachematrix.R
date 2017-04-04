@@ -27,9 +27,10 @@ makeCacheMatrix <- function(x = matrix()) { #defines x as an empty matrix for th
                 v <<- NULL #Assigns the value of NULL to the v object in the parent environment 
         }                  #This means that any value of v previously cached by executing cacheSolve is cleared
         get<- function() x #This gets the value of the matrix. Since x isn't defined within get(), R retrieve it from parent environment
-        setinverse <- function(solve) v <<- solve #This sets the value of the inverse
+        setinverse <- function(inversematrix) v <<- inversematrix #This sets the value of the inverse
         #Since v is defined in parent environment and need to access it there, use the <<- assignment operator
-        #So it assigns input argument (which is 'solve' here) to the valye of v in parent environment
+        #So it assigns input argument (which is 'inversematrix' here) to the value of v in parent environment
+        #inversematrix is a function argument containing the inverse of the matrix stored in x within makeCacheMatrix()
         getinverse <- function() v #This gets the value of the inverse
         #Since v isn't defined within getinverse, R will retrieve it from parent environment
         #The list part below creates a list with each of these functions as an element
